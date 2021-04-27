@@ -1,0 +1,1 @@
+rostopic pub /leg_lf_controller/command trajectory_msgs/JointTrajectory '{joint_names: ["joint_LF_1", "joint_LF_2", "joint_LF_3"], points: [{positions: [0.0, 0.0, 0.0], time_from_start: [1.0, 0.0]}]}'

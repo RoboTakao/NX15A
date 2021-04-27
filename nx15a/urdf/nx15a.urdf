@@ -1,0 +1,690 @@
+<?xml version="1.0" ?>
+<robot name="nx15a">
+    <material name="blue">
+        <color rgba="0.0 0.0 1.0 2.0" />
+    </material>
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 2.0" />
+    </material>
+    <link name="base_link" />
+    <joint name="base_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="Body" />
+        <origin xyz="0 0 0.140" rpy="0 0 0" />
+    </joint>
+    <link name="Body">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Body.stl" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.076 0.112 0.048" />
+            </geometry>
+            <origin xyz="0 0.056 0.009" rpy="0 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="0 0.052 0.008" rpy="0 0 0" />
+            <mass value="0.346" />
+            <inertia ixx="0.000441846" ixy="0" ixz="0" iyx="0" iyy="0.000227303" iyz="0" izx="0" izy="0" izz="0.00054726" />
+        </inertial>
+    </link>
+    <joint name="joint_LF_1" type="revolute">
+        <parent link="Body" />
+        <child link="Leg_Upper_LF" />
+        <origin xyz="0.023 -0.0355 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Upper_LF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Upper_LH.stl" />
+            </geometry>
+            <origin xyz="-0.007 0.035 -0.022" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.018 0.032 0.0422" />
+            </geometry>
+            <origin xyz="0.002 0.019 -0.0009" rpy="0 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="0.007 0.00203 0.0003" rpy="0 0 0" />
+            <mass value="0.035143" />
+            <inertia ixx="0.000008214" ixy="0" ixz="0" iyx="0" iyy="0.000006164" iyz="0" izx="0" izy="0" izz="0.000003948" />
+        </inertial>
+    </link>
+    <joint name="joint_LF_2" type="revolute">
+        <parent link="Leg_Upper_LF" />
+        <child link="Leg_Mid_LF" />
+        <origin xyz="0.013 0.021 -0.0093" rpy="0.785398163397 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Mid_LF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Mid_LH.stl" />
+            </geometry>
+            <origin xyz="0.035 0.007 -0.0557" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.032 0.014 0.0714" />
+            </geometry>
+            <origin xyz="0.019 0 -0.020" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0166 0 -0.0229" rpy="0 0 0" />
+            <mass value="0.039138" />
+            <inertia ixx="0.000017266" ixy="0" ixz="0" iyx="0" iyy="0.000019967" iyz="0" izx="0" izy="0" izz="0.000003979" />
+        </inertial>
+    </link>
+    <joint name="joint_LF_3" type="revolute">
+        <parent link="Leg_Mid_LF" />
+        <child link="Leg_bottom_LF" />
+        <origin xyz="0.022 0 -0.0707" rpy="-1.570796326795 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_bottom_LF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_bottom_LH.stl" />
+            </geometry>
+            <origin xyz="0.0045 0 0" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.008 0.010 0.060" />
+            </geometry>
+            <origin xyz="0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <mass value="0.00816" />
+            <inertia ixx="0.000002516" ixy="0" ixz="0" iyx="0" iyy="0.000002492" iyz="0" izx="0" izy="0" izz="0.000000112" />
+        </inertial>
+    </link>
+    <joint name="joint_LF_4" type="fixed">
+        <parent link="Leg_bottom_LF" />
+        <child link="Rubber_LF" />
+        <origin xyz="0.0023 -0.030 -0.063" rpy="0.785398163397 0 0" />
+    </joint>
+    <link name="Rubber_LF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Rubber.stl" />
+            </geometry>
+            <origin xyz="0.0002 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.0065" />
+            </geometry>
+            <origin xyz="0.0022 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0022 0 0" rpy="0 0 0" />
+            <mass value="0.0004" />
+            <inertia ixx="0.000000011" ixy="0" ixz="0" iyx="0" iyy="0.000000006" iyz="0" izx="0" izy="0" izz="0.000000006" />
+        </inertial>
+    </link>
+    
+    <joint name="joint_LR_1" type="revolute">
+        <parent link="Body" />
+        <child link="Leg_Upper_LR" />
+        <origin xyz="0.023 0.110 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Upper_LR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Upper_LH.stl" />
+            </geometry>
+            <origin xyz="-0.007 0.035 -0.022" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.018 0.032 0.0422" />
+            </geometry>
+            <origin xyz="0.002 0.019 -0.0009" rpy="0 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="0.007 0.00203 0.0003" rpy="0 0 0" />
+            <mass value="0.035143" />
+            <inertia ixx="0.000008214" ixy="0" ixz="0" iyx="0" iyy="0.000006164" iyz="0" izx="0" izy="0" izz="0.000003948" />
+        </inertial>
+    </link>
+    <joint name="joint_LR_2" type="revolute">
+        <parent link="Leg_Upper_LR" />
+        <child link="Leg_Mid_LR" />
+        <origin xyz="0.013 0.021 -0.0093" rpy="0.785398163397 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Mid_LR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Mid_LH.stl" />
+            </geometry>
+            <origin xyz="0.035 0.007 -0.0557" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.032 0.014 0.0714" />
+            </geometry>
+            <origin xyz="0.019 0 -0.020" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0166 0 -0.0229" rpy="0 0 0" />
+            <mass value="0.039138" />
+            <inertia ixx="0.000017266" ixy="0" ixz="0" iyx="0" iyy="0.000019967" iyz="0" izx="0" izy="0" izz="0.000003979" />
+        </inertial>
+    </link>
+    <joint name="joint_LR_3" type="revolute">
+        <parent link="Leg_Mid_LR" />
+        <child link="Leg_bottom_LR" />
+        <origin xyz="0.022 0 -0.0707" rpy="-1.570796326795 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_bottom_LR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_bottom_LH.stl" />
+            </geometry>
+            <origin xyz="0.0045 0 0" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.008 0.010 0.060" />
+            </geometry>
+            <origin xyz="0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <mass value="0.00816" />
+            <inertia ixx="0.000002516" ixy="0" ixz="0" iyx="0" iyy="0.000002492" iyz="0" izx="0" izy="0" izz="0.000000112" />
+        </inertial>
+    </link>
+    <joint name="joint_LR_4" type="fixed">
+        <parent link="Leg_bottom_LR" />
+        <child link="Rubber_LR" />
+        <origin xyz="0.0023 -0.030 -0.063" rpy="0.785398163397 0 0" />
+    </joint>
+    <link name="Rubber_LR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Rubber.stl" />
+            </geometry>
+            <origin xyz="0.0002 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.0065" />
+            </geometry>
+            <origin xyz="0.0022 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="0.0022 0 0" rpy="0 0 0" />
+            <mass value="0.0004" />
+            <inertia ixx="0.000000011" ixy="0" ixz="0" iyx="0" iyy="0.000000006" iyz="0" izx="0" izy="0" izz="0.000000006" />
+        </inertial>
+    </link>
+
+    <joint name="joint_RF_1" type="revolute">
+        <parent link="Body" />
+        <child link="Leg_Upper_RF" />
+        <origin xyz="-0.023 -0.0355 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Upper_RF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Upper_RH.stl" />
+            </geometry>
+            <origin xyz="0.007 0.035 -0.022" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.018 0.032 0.0422" />
+            </geometry>
+            <origin xyz="-0.002 0.019 -0.0009" rpy="0 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.007 0.00203 0.0003" rpy="0 0 0" />
+            <mass value="0.035143" />
+            <inertia ixx="0.000008214" ixy="0" ixz="0" iyx="0" iyy="0.000006164" iyz="0" izx="0" izy="0" izz="0.000003948" />
+        </inertial>
+    </link>
+    <joint name="joint_RF_2" type="revolute">
+        <parent link="Leg_Upper_RF" />
+        <child link="Leg_Mid_RF" />
+        <origin xyz="-0.013 0.021 -0.0093" rpy="0.785398163397 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Mid_RF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Mid_RH.stl" />
+            </geometry>
+            <origin xyz="-0.035 0.007 -0.0557" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.032 0.014 0.0714" />
+            </geometry>
+            <origin xyz="-0.019 0 -0.020" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0166 0 -0.0229" rpy="0 0 0" />
+            <mass value="0.039138" />
+            <inertia ixx="0.000017266" ixy="0" ixz="0" iyx="0" iyy="0.000019967" iyz="0" izx="0" izy="0" izz="0.000003979" />
+        </inertial>
+    </link>
+    <joint name="joint_RF_3" type="revolute">
+        <parent link="Leg_Mid_RF" />
+        <child link="Leg_bottom_RF" />
+        <origin xyz="-0.022 0 -0.0707" rpy="-1.570796326795 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_bottom_RF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_bottom_RH.stl" />
+            </geometry>
+            <origin xyz="-0.0045 0 0" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.008 0.010 0.060" />
+            </geometry>
+            <origin xyz="-0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <mass value="0.00816" />
+            <inertia ixx="0.000002516" ixy="0" ixz="0" iyx="0" iyy="0.000002492" iyz="0" izx="0" izy="0" izz="0.000000112" />
+        </inertial>
+    </link>
+    <joint name="joint_RF_4" type="fixed">
+        <parent link="Leg_bottom_RF" />
+        <child link="Rubber_RF" />
+        <origin xyz="-0.0023 -0.030 -0.063" rpy="0.785398163397 0 0" />
+    </joint>
+    <link name="Rubber_RF">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Rubber.stl" />
+            </geometry>
+            <origin xyz="-0.0002 0 0" rpy="0 0 3.1415926535897931" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.0065" />
+            </geometry>
+            <origin xyz="-0.0022 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0022 0 0" rpy="0 0 0" />
+            <mass value="0.0004" />
+            <inertia ixx="0.000000011" ixy="0" ixz="0" iyx="0" iyy="0.000000006" iyz="0" izx="0" izy="0" izz="0.000000006" />
+        </inertial>
+    </link>
+
+    <joint name="joint_RR_1" type="revolute">
+        <parent link="Body" />
+        <child link="Leg_Upper_RR" />
+        <origin xyz="-0.023 0.110 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Upper_RR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Upper_RH.stl" />
+            </geometry>
+            <origin xyz="0.007 0.035 -0.022" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.018 0.032 0.0422" />
+            </geometry>
+            <origin xyz="-0.002 0.019 -0.0009" rpy="0 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.007 0.00203 0.0003" rpy="0 0 0" />
+            <mass value="0.035143" />
+            <inertia ixx="0.000008214" ixy="0" ixz="0" iyx="0" iyy="0.000006164" iyz="0" izx="0" izy="0" izz="0.000003948" />
+        </inertial>
+    </link>
+    <joint name="joint_RR_2" type="revolute">
+        <parent link="Leg_Upper_RR" />
+        <child link="Leg_Mid_RR" />
+        <origin xyz="-0.013 0.021 -0.0093" rpy="0.785398163397 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_Mid_RR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_Mid_RH.stl" />
+            </geometry>
+            <origin xyz="-0.035 0.007 -0.0557" rpy="0 0 0" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.032 0.014 0.0714" />
+            </geometry>
+            <origin xyz="-0.019 0 -0.020" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0166 0 -0.0229" rpy="0 0 0" />
+            <mass value="0.039138" />
+            <inertia ixx="0.000017266" ixy="0" ixz="0" iyx="0" iyy="0.000019967" iyz="0" izx="0" izy="0" izz="0.000003979" />
+        </inertial>
+    </link>
+    <joint name="joint_RR_3" type="revolute">
+        <parent link="Leg_Mid_RR" />
+        <child link="Leg_bottom_RR" />
+        <origin xyz="-0.022 0 -0.0707" rpy="-1.570796326795 0 0" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.57" upper="1.57" effort="30" velocity="3.142" />
+    </joint>
+    <link name="Leg_bottom_RR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Leg_bottom_RH.stl" />
+            </geometry>
+            <origin xyz="-0.0045 0 0" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.008 0.010 0.060" />
+            </geometry>
+            <origin xyz="-0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <material name="blue" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0049 -0.012896 -0.030" rpy="-0.444360827558 0 0" />
+            <mass value="0.00816" />
+            <inertia ixx="0.000002516" ixy="0" ixz="0" iyx="0" iyy="0.000002492" iyz="0" izx="0" izy="0" izz="0.000000112" />
+        </inertial>
+    </link>
+    <joint name="joint_RR_4" type="fixed">
+        <parent link="Leg_bottom_RR" />
+        <child link="Rubber_RR" />
+        <origin xyz="-0.0023 -0.030 -0.063" rpy="0.785398163397 0 0" />
+    </joint>
+    <link name="Rubber_RR">
+        <visual>
+            <geometry>
+                <mesh filename="package://nx15a/stl/Rubber.stl" />
+            </geometry>
+            <origin xyz="-0.0002 0 0" rpy="0 0 3.1415926535897931" />
+            <material name="black" />
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.0065" />
+            </geometry>
+            <origin xyz="-0.0022 0 0" rpy="0 0 0" />
+            <material name="black" />
+        </collision>
+	<inertial>
+            <origin xyz="-0.0022 0 0" rpy="0 0 0" />
+            <mass value="0.0004" />
+            <inertia ixx="0.000000011" ixy="0" ixz="0" iyx="0" iyy="0.000000006" iyz="0" izx="0" izy="0" izz="0.000000006" />
+        </inertial>
+    </link>
+    
+    <transmission name="trans_joint_LF_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LF_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LF_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_LF_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LF_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LF_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_LF_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LF_3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LF_3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_LR_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LR_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LR_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_LR_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LR_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LR_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_LR_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_LR_3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_LR_3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RF_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RF_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RF_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RF_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RF_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RF_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RF_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RF_3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RF_3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RR_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RR_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RR_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RR_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RR_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RR_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_RR_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_RR_3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_RR_3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo reference="Body">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_Upper_LF">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_Upper_LR">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_Upper_RF">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_Upper_RR">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_Mid_LF">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Leg_Mid_LR">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Leg_Mid_RF">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Leg_Mid_RR">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Leg_bottom_LF">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_bottom_LR">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_bottom_RF">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Leg_bottom_RR">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="Rubber_LF">
+        <material>Gazebo/Black</material>
+        <kp>1e9</kp>
+        <kd>100</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <fdir1>1 0 0</fdir1>
+        <maxVel>1.0</maxVel>
+        <minDepth>0.001</minDepth>
+    </gazebo>
+    <gazebo reference="Rubber_LR">
+        <material>Gazebo/Black</material>
+        <kp>1e9</kp>
+        <kd>100</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <fdir1>1 0 0</fdir1>
+        <maxVel>1.0</maxVel>
+        <minDepth>0.001</minDepth>
+    </gazebo>
+    <gazebo reference="Rubber_RF">
+        <material>Gazebo/Black</material>
+        <kp>1e9</kp>
+        <kd>100</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <fdir1>1 0 0</fdir1>
+        <maxVel>1.0</maxVel>
+        <minDepth>0.001</minDepth>
+    </gazebo>
+    <gazebo reference="Rubber_RR">
+        <material>Gazebo/Black</material>
+        <kp>1e9</kp>
+        <kd>100</kd>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <fdir1>1 0 0</fdir1>
+        <maxVel>1.0</maxVel>
+        <minDepth>0.001</minDepth>
+    </gazebo>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <legacyModeNS>true</legacyModeNS>
+        </plugin>
+        <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+            <robotNamespace>/</robotNamespace>
+            <jointName>joint_LF_1, joint_LF_2, joint_LF_3, joint_LR_1, joint_LR_2, joint_LR_3, joint_RF_1, joint_RF_2, joint_RF_3, joint_RR_1, joint_RR_2, joint_RR_3</jointName>
+        </plugin>
+    </gazebo>
+</robot>

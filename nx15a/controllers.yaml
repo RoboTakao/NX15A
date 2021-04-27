@@ -1,0 +1,52 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+leg_lf_controller:
+  type: effort_controllers/JointTrajectoryController
+  publish_rate: 50
+  joints:
+    - joint_LF_1
+    - joint_LF_2
+    - joint_LF_3
+  gains:
+    joint_LF_1 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_LF_2 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_LF_3 : {p: 10.0, i: 0.0, d: 0.01}
+
+
+leg_lr_controller:
+  type: effort_controllers/JointTrajectoryController
+  publish_rate: 50
+  joints:
+    - joint_LR_1
+    - joint_LR_2
+    - joint_LR_3
+  gains:
+    joint_LR_1 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_LR_2 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_LR_3 : {p: 10.0, i: 0.0, d: 0.01}
+
+leg_rf_controller:
+  type: effort_controllers/JointTrajectoryController
+  publish_rate: 50
+  joints:
+    - joint_RF_1
+    - joint_RF_2
+    - joint_RF_3
+  gains:
+    joint_RF_1 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_RF_2 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_RF_3 : {p: 10.0, i: 0.0, d: 0.01}
+
+leg_rr_controller:
+  type: effort_controllers/JointTrajectoryController
+  publish_rate: 50
+  joints:
+    - joint_RR_1
+    - joint_RR_2
+    - joint_RR_3
+  gains:
+    joint_RR_1 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_RR_2 : {p: 10.0, i: 0.0, d: 0.01}
+    joint_RR_3 : {p: 10.0, i: 0.0, d: 0.01}
