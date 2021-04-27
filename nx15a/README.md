@@ -1,33 +1,33 @@
 # NX15A
 
-Launch simulation
+//Launch simulation
 
-# roslaunch nx15a nx15a_simulation.launch
+roslaunch nx15a nx15a_simulation.launch
 
-Initial pose
+//Initial pose
 
-# rosrun nx15a nx15a_start_point.py
+rosrun nx15a nx15a_start_point.py
 
-Forward
+//Forward
 
-# rosrun nx15a nx15a_walk_fwd.py
+rosrun nx15a nx15a_walk_fwd.py
 
-Back
+//Back
 
-# rosrun nx15a nx15a_walk_back.py
+rosrun nx15a nx15a_walk_back.py
 
-Left turn
+//Left turn
 
-# rosrun nx15a nx15a_walk_leftturn.py
+rosrun nx15a nx15a_walk_leftturn.py
 
-Right turn
+//Right turn
 
-# rosrun nx15a nx15a_walk_rightturn.py
+rosrun nx15a nx15a_walk_rightturn.py
 
-Left side
+//Left side
 
-# rosrun nx15a nx15a_walk_leftside.py
+rosrun nx15a nx15a_walk_leftside.py
 
-Right side
+//Right side
 
-# rosrun nx15a nx15a_walk_rightside.py
+rosrun nx15a nx15a_walk_rightside.py
