@@ -31,3 +31,7 @@ rosrun nx15a nx15a_walk_leftside.py
 //Right side
 
 rosrun nx15a nx15a_walk_rightside.py
+
+//Key controllers  It's necessary to install pynput
+
+rosrun nx15a nx15a_key_controller.py
