@@ -6,9 +6,13 @@ http://robotakao.jp/NX15/e/index.html
 
 roslaunch nx15a nx15a_simulation.launch
 
-//Initial pose
+//Initial pose (stand up)
 
-rosrun nx15a nx15a_start_point.py
+rosrun nx15a nx15a_stand_up.py
+
+//Sit down
+
+rosrun nx15a nx15a_sit_down.py
 
 //Forward
 
@@ -36,11 +40,27 @@ rosrun nx15a nx15a_walk_rightside.py
 
 //Left Head
 
-rosrun nx15a nx15a_left_head_.py
+rosrun nx15a nx15a_left_head.py
 
 //Right Head
 
-rosrun nx15a nx15a_right_head_.py
+rosrun nx15a nx15a_right_head.py
+
+//Left rolling
+
+rosrun nx15a nx15a_left_roll.py
+
+//Right rolling
+
+rosrun nx15a nx15a_right_roll.py
+
+//Head up
+
+rosrun nx15a nx15a_head_up.py
+
+//Head down
+
+rosrun nx15a nx15a_head_down.py
 
 //Key controllers  It's necessary to install pynput
 
