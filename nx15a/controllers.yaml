@@ -1,6 +1,6 @@
 joint_state_controller:
   type: joint_state_controller/JointStateController
-  publish_rate: 5
+  publish_rate: 2
 
 leg_lf_controller:
   type: effort_controllers/JointTrajectoryController
