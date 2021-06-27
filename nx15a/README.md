@@ -6,6 +6,10 @@ http://robotakao.jp/NX15/e/index.html
 
 roslaunch nx15a nx15a_simulation.launch
 
+//Total walking control
+
+rosrun nx15a nx15a_walk_ik.py
+
 //Initial pose (stand up)
 
 rosrun nx15a nx15a_stand_up.py
@@ -29,7 +33,7 @@ rosrun nx15a nx15a_walk_leftturn.py
 //Right turn
 
 rosrun nx15a nx15a_walk_rightturn.py
-w
+
 //Left side
 
 rosrun nx15a nx15a_walk_leftside.py
