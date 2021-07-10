@@ -10,6 +10,10 @@ roslaunch nx15a nx15a_simulation.launch
 
 rosrun nx15a nx15a_walk_ik.py
 
+//Total walking control via blynk
+
+rosrun nx15a nx15a_walk_ik_blynk.py
+
 //Initial pose (stand up)
 
 rosrun nx15a nx15a_stand_up.py
