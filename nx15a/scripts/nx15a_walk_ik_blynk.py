@@ -3,8 +3,8 @@
 import rospy
 import numpy as np
 import math
+from std_msgs.msg import Int32MultiArray
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
-from pynput import keyboard
 import nx15a_stand_up
 
 pi = math.pi
@@ -19,17 +19,17 @@ H0 = 110 #Height
 Zc = 25 #Half Width
 Xp = 72.75 #Half pitch
 
-angXX = 0
-angYY = 0
-angZZ = 0
-shiftXX0 = 0
-shiftXX = 0
-shiftYY = 0
-shiftZZ = 0
+angXX = 0.0
+angYY = 0.0
+angZZ = 0.0
+shiftXX0 = 0.0
+shiftXX = 0.0
+shiftYY = 0.0
+shiftZZ = 0.0
 
 flag_w_s = 0
 
-fup = 25
+fup = 25.0
 
 Ts = 0.05
 Ts_h = 0.2
@@ -45,55 +45,24 @@ mlist0_h = [-(FtCoLF0[0]+Xp), FtCoLF0[1], FtCoLF0[2]-Zc, \
     -(FtCoRF0[0]+Xp), FtCoRF0[1], -(FtCoRF0[2]+Zc), \
     (FtCoRR0[0]-Xp), FtCoRR0[1], -(FtCoRR0[2]+Zc)]
 
-def on_press(key):
+def callback(Blynk_joy):
     global angXX, angYY, angZZ, shiftXX, shiftYY, shiftZZ, shiftXX0, flag_w_s
-    keyinput = key.char
-    if keyinput == "y":
-        flag_w_s = 0
-    if keyinput == "h":
-        flag_w_s = 1
-        angXX = 0
-        angZZ = 0
-    if keyinput == "t":
-        shiftXX0+= 1
-        print(shiftXX0)
-    if keyinput == "g":
-        shiftXX0-= 1
-        print(shiftXX0)
-    if keyinput == "m" and flag_w_s == 0: #body_right
-        angXX-= 5.0
-    if keyinput == "." and flag_w_s == 0: #body_left
-        angXX+= 5.0
-    if keyinput == "o" and flag_w_s == 0: #head_right
-        angYY+= 5.0
-    if keyinput == "u" and flag_w_s == 0: #head_left
-        angYY-= 5.0
-    if keyinput == "k" and flag_w_s == 0: #head_up
-        angZZ+= 5.0
-    if keyinput == "i" and flag_w_s == 0: #head_down
-        angZZ-= 5.0
-    if keyinput == "o" and flag_w_s == 1: #walk_turn_right
-        angYY-= 5.0
-    if keyinput == "u" and flag_w_s == 1: #walk_turn_left
-        angYY+= 5.0
-    if keyinput == "k" and flag_w_s == 1: #walk_back
-        shiftXX+= 10.0
-    if keyinput == "i" and flag_w_s == 1: #walk_fwd
-        shiftXX-= 10.0
-    if keyinput == "p": #body_up
-        shiftYY+= 5.0
-    if keyinput == ";": #body_down
-        shiftYY-= 5.0
-    if keyinput == "l" and flag_w_s == 1: #walk_side_right
-        shiftZZ-= 10.0
-    if keyinput == "j" and flag_w_s == 1: #walk_side_left
-        shiftZZ+= 10.0
-    if keyinput == ",": #zero
-        angXX = 0
-        angYY = 0
-        angZZ = 0
-        shiftXX = 0
-        shiftZZ = 0
+
+    print(Blynk_joy.data[0], Blynk_joy.data[1], Blynk_joy.data[2], Blynk_joy.data[3], Blynk_joy.data[4], Blynk_joy.data[5], Blynk_joy.data[6])
+    
+    flag_w_s = Blynk_joy.data[0]
+    shiftXX0 = float(Blynk_joy.data[5])
+    shiftYY = float(Blynk_joy.data[6])
+
+    if flag_w_s == 0:
+        angYY = float(Blynk_joy.data[1])
+        angZZ = -float(Blynk_joy.data[2])
+        angXX = float(Blynk_joy.data[3])
+    
+    if flag_w_s == 1:
+        shiftXX = -float(Blynk_joy.data[2])
+        angYY = -float(Blynk_joy.data[1])/5
+        shiftZZ = -float(Blynk_joy.data[3])
 
 def transform(FtCo, angleXYZ):
     RotX = np.array([[1, 0, 0], [0, math.cos(angleXYZ[0]), -math.sin(angleXYZ[0])], [0, math.sin(angleXYZ[0]), math.cos(angleXYZ[0])]])
@@ -118,7 +87,7 @@ def inverse_kinematic(X2, H2, Z2):
     return Theta3, Theta1_2, Theta2_2
 
 def talker(shiftX, shiftY, shiftZ, angX, angY, angZ):
-    global mlist0_h, shiftXX0, fup
+    global mlist0_h, shiftXX0, fup, flag_w_s
     shift = np.array([shiftX, 0, shiftZ])
     shift0 = np.array([shiftXX0, 0, 0])
     euler = np.array([angX, angY, angZ]) / 180 * pi  # X axis, Y axis , Z axis
@@ -285,17 +254,11 @@ def talker(shiftX, shiftY, shiftZ, angX, angY, angZ):
     pub_rr.publish(msg_rr)
     rospy.sleep(0.1)
 
-print("t: ShiftX + y :Head control u :Left Turn/Left Head i: Fwd/Head Up    o: Right Turn/Right Head p:Body Up")
-print("g: ShiftX - h :Walk control j :Left Side           k: Back/Head Down l: Right Side            +:Body Down")
-print("                            m :Body Left Turn      <: Zero           >: Body Right Turn")
-
 nx15a_stand_up.talker()
 
-# Collect events until released
-listener = keyboard.Listener(on_press=on_press)
-listener.start()
-
 if __name__ == '__main__':
+    rospy.Subscriber("Blynk_joystick",Int32MultiArray,callback)
+    
     while True:
         try:
             talker(shiftXX, shiftYY, shiftZZ, angXX, angYY, angZZ)
