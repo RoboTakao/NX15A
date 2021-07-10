@@ -30,10 +30,10 @@ int target_angle[12];
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
-char auth[] = "cckwW3wh9kK-dvrRzZBuk3cGTjRl0A5Y";
+char auth[] = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
-const char* ssid = "aterm-753fbd-g";
-const char* password = "4960ef845d682";
+const char* ssid = "XXXXXXXXXXXXXX";
+const char* password = "XXXXXXXXXXXXXX";
 
 WiFiClient client;
 IPAddress server(192, 168, 10, 18); //ROS core IP adress
