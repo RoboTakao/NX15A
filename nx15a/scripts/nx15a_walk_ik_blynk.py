@@ -5,7 +5,6 @@ import numpy as np
 import math
 from std_msgs.msg import Int32MultiArray
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
-import nx15a_stand_up
 
 pi = math.pi
 
@@ -32,7 +31,7 @@ flag_w_s = 0
 fup = 25.0
 
 Ts = 0.05
-Ts_h = 0.2
+Ts_h = 0.3
 
 #initial coordinate
 FtCoLF0 = np.array([-Xp + shiftXX0, H0, Z0 + Zc])     # Left Front X,Y,Z
@@ -253,8 +252,6 @@ def talker(shiftX, shiftY, shiftZ, angX, angY, angZ):
     pub_rf.publish(msg_rf)
     pub_rr.publish(msg_rr)
     rospy.sleep(0.1)
-
-nx15a_stand_up.talker()
 
 if __name__ == '__main__':
     rospy.Subscriber("Blynk_joystick",Int32MultiArray,callback)

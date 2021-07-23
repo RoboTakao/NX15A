@@ -5,7 +5,6 @@ import numpy as np
 import math
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from pynput import keyboard
-import nx15a_stand_up
 
 pi = math.pi
 
@@ -32,7 +31,7 @@ flag_w_s = 0
 fup = 25
 
 Ts = 0.05
-Ts_h = 0.2
+Ts_h = 0.3
 
 #initial coordinate
 FtCoLF0 = np.array([-Xp + shiftXX0, H0, Z0 + Zc])     # Left Front X,Y,Z
@@ -288,8 +287,6 @@ def talker(shiftX, shiftY, shiftZ, angX, angY, angZ):
 print("t: ShiftX + y :Head control u :Left Turn/Left Head i: Fwd/Head Up    o: Right Turn/Right Head p:Body Up")
 print("g: ShiftX - h :Walk control j :Left Side           k: Back/Head Down l: Right Side            +:Body Down")
 print("                            m :Body Left Turn      <: Zero           >: Body Right Turn")
-
-nx15a_stand_up.talker()
 
 # Collect events until released
 listener = keyboard.Listener(on_press=on_press)
