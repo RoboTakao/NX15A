@@ -14,6 +14,10 @@ rosrun nx15a nx15a_walk_ik.py
 
 rosrun nx15a nx15a_walk_ik_blynk.py
 
+//Total walking control with IMU via blynk
+
+rosrun nx15a nx15a_walk_ik_blynk_imu.py
+
 //Initial pose (stand up)
 
 rosrun nx15a nx15a_stand_up.py
