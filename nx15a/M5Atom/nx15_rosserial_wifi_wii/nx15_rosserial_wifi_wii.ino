@@ -6,8 +6,6 @@
 
 int loop_cnt=0;
 
-//byte accx,accy,accz,joyx,joyy,zbut,cbut;
-
 static uint8_t nunchuck_buf[6];   // array to store nunchuck data,
 
 WiFiClient client;
