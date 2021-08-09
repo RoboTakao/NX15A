@@ -19,7 +19,7 @@ http://robotakao.jp/NX15/e/index.html
  roslaunch nx15a nx15a_simulation_rosserial.launch
  rosrun nx15a nx15a_walk_ik_blynk.py
 
-[Blynk Controll]
+[Wii nunchuck Controll]
  When controlling with the Wii controller (M5Atom).
  Use of IMU.
 
