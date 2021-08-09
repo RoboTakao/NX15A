@@ -27,10 +27,6 @@ const char* password = "XXXXXXXXXXXXX";
 WiFiClient client;
 IPAddress server(192, 168, 10, 19); //ROS core IP adress
 
-//int flag;
-//int Joy1_X, Joy1_Y, Joy2_X, Joy2_Y;
-//int ShiftX, ShiftY;
-
 //IMU
 float roll, pitch, yaw;
 #define IMU_AFS M5.IMU.AFS_2G       // Ascale [g]      (±2,4,8,16)
@@ -76,13 +72,6 @@ void servo_cb(const sensor_msgs::JointState& msg) {
   TARGET_JOINT_POSITIONS[11] = msg.position[5]; //RearLeft
 
   servo_set();
-
-  //for (int i=0; i <= 10; i++){
-  //  Serial.print(target_angle[i]);
-  //  Serial.print(" ");
-  //}
-  //Serial.println(target_angle[11]);
-
 }
 
 ros::Subscriber<sensor_msgs::JointState> sub("joint_states", servo_cb);
