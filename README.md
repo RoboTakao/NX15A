@@ -19,7 +19,7 @@ http://robotakao.jp/NX15/e/index.html
  roslaunch nx15a nx15a_simulation_rosserial.launch
  rosrun nx15a nx15a_walk_ik_blynk.py
 
-[Wii nunchuck Controll]
+[Wii Nunchunck Controll]
  When controlling with the Wii controller (M5Atom).
  Use of IMU.
 
@@ -29,3 +29,14 @@ http://robotakao.jp/NX15/e/index.html
 
  roslaunch nx15a nx15a_simulation_rosserial_wii_imu.launch
  rosrun nx15a nx15a_walk_ik_wii_imu.py
+
+[Ultra Sonic Dinstance Sensor with Wii Nunchunck Controll]
+ Ultra Sonic Distance Sensor use.
+ When controlling with the Wii controller (M5Atom).
+
+ M5Atom sketch
+  For robot : nx15_rosserial_wifi_IMU_Sonic.ino
+  For wii controller : nx15_rosserial_wifi_wii.ino
+
+ roslaunch nx15a nx15a_simulation_rosserial_wii_imu.launch
+ rosrun nx15a nx15a_walk_ik_wii_imu_distancw.py
