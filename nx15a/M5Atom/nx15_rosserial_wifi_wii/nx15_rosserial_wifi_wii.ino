@@ -1,3 +1,4 @@
+// wii nunchuck adapter is based on https://github.com/todbot/wiichuck_adapter.git
 #include "M5Atom.h"
 #include <Wire.h>
 #include <ros.h>
