@@ -1,6 +1,6 @@
 # NX15A
 Summary:  
-http://robotakao.jp/NX15/e/index.html  
+http://robotakao.web.fc2.com/NX15/e/index.html  
   
   
 [Key Controll]  
